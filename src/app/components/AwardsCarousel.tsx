@@ -104,11 +104,6 @@ const awards: Award[] = [
     image: '/assets/globee.png',
   },
   {
-    year: '',
-    name: 'Noble Business Awards',
-    image: '/assets/1ae28c11dac8d169cdafe59af87ef30f3971b78d.png',
-  },
-  {
     year: 'Silver Winner: Liderazgo en Educación - 2025',
     name: 'Noble Business Awards',
     image: '/assets/1ae28c11dac8d169cdafe59af87ef30f3971b78d.png',
