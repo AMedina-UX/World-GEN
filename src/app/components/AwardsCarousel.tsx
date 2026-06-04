@@ -22,28 +22,28 @@ const awards: Award[] = [
   },
   {
     year: '',
-    name: 'LAQUI',
-    image: '/assets/LAQI.png',
+    name: 'LAQI',
+    image: '/assets/laqi.png',
   },
   {
     year: '',
     name: 'ABE',
-    image: '/assets/ABE.png',
+    image: '/assets/abe.png',
   },
   {
     year: '',
     name: 'SNI',
-    image: '/assets/SNI.png',
+    image: '/assets/sni.png',
   },
   {
     year: '',
     name: 'CEDU',
-    image: '/assets/CEDU.png',
+    image: '/assets/cedu.png',
   },
   {
     year: '',
     name: 'CCL',
-    image: '/assets/CCL.png',
+    image: '/assets/ccl.png',
   },
   {
     year: 'Gold Winner: Video/Audio - 2023',
@@ -73,7 +73,7 @@ const awards: Award[] = [
   {
     year: 'Gold Winner: Contenido de campaña social - 2024',
     name: 'Hermes Creative Awards',
-    image: '/assets/9d0d4c2326885b288ce9beaf779d4ca9702304b4.png',
+    image: '/assets/hermes.png',
   },
 
   {
@@ -105,7 +105,7 @@ const awards: Award[] = [
   {
     year: 'Logro en la Excelencia del Servicio al Cliente - 2025',
     name: 'Globee Awards',
-    image: '/assets/gloobee.png',
+    image: '/assets/globee.png',
   },
   {
     year: '',
@@ -141,12 +141,12 @@ const awards: Award[] = [
   {
     year: 'Platinium Winner: Evento Virtual Bootcamp - 2025',
     name: 'Viddy Awards',
-    image: '/assets/Viddy.png',
+    image: '/assets/viddy.png',
   },
   {
     year: 'Calidad Educativa - 2025',
     name: 'Premio Quality Perú del Año 2025',
-    image: '/assets/LAQI2.png',
+    image: '/assets/laqi2.png',
   },
 
   {
@@ -164,7 +164,7 @@ const awards: Award[] = [
   {
     year: 'Excelencia empresarial - 2025',
     name: 'THE BIZZ',
-    image: '/assets/BIZZ.png',
+    image: '/assets/bizz.png',
   },
 
   {
@@ -176,7 +176,7 @@ const awards: Award[] = [
   {
     year: 'Platinium Winner: Evento Ultra - World GEN - 2025',
     name: 'LIT Awards',
-    image: '/assets/LIT.png',
+    image: '/assets/lit.png',
   },
 
   {
@@ -195,48 +195,37 @@ const awards: Award[] = [
 
 export default function AwardsCarousel() {
   const sliderRef = useRef<HTMLDivElement>(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
   const autoPlayTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-  const checkScrollLimits = () => {
-    const slider = sliderRef.current;
-    if (slider) {
-      setCanScrollLeft(slider.scrollLeft > 5);
-      setCanScrollRight(
-        slider.scrollLeft + slider.clientWidth < slider.scrollWidth - 10
-      );
-    }
-  };
-
-  useEffect(() => {
-    const slider = sliderRef.current;
-    if (slider) {
-      slider.addEventListener('scroll', checkScrollLimits);
-      // Wait for image loads/rendering to run limit checks
-      const timer = setTimeout(checkScrollLimits, 500);
-      window.addEventListener('resize', checkScrollLimits);
-
-      return () => {
-        slider.removeEventListener('scroll', checkScrollLimits);
-        window.removeEventListener('resize', checkScrollLimits);
-        clearTimeout(timer);
-      };
-    }
-  }, []);
-
-  // Smooth scroll logic like Netflix/Prime Video
+  // Smooth scroll logic with wrap-around
   const scroll = (direction: 'left' | 'right') => {
     const slider = sliderRef.current;
     if (slider) {
       const gap = 24; // gap-6
       const scrollAmount = slider.clientWidth + gap;
 
-      slider.scrollBy({
-        left: direction === 'left' ? -scrollAmount : scrollAmount,
-        behavior: 'smooth'
-      });
+      if (direction === 'left') {
+        // If we are at the beginning, wrap to the end
+        if (slider.scrollLeft <= 5) {
+          slider.scrollTo({ left: slider.scrollWidth, behavior: 'smooth' });
+        } else {
+          slider.scrollBy({
+            left: -scrollAmount,
+            behavior: 'smooth'
+          });
+        }
+      } else {
+        // If we are at the end, wrap to the beginning
+        if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 20) {
+          slider.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          slider.scrollBy({
+            left: scrollAmount,
+            behavior: 'smooth'
+          });
+        }
+      }
     }
   };
 
@@ -289,11 +278,7 @@ export default function AwardsCarousel() {
         <div className="flex gap-3 relative z-20">
           <button
             onClick={() => scroll('left')}
-            disabled={!canScrollLeft}
-            className={`w-10 h-10 rounded-full bg-[#1a163b]/80 border border-[#5c64f2]/40 flex items-center justify-center text-white/80 transition-all duration-200 ${canScrollLeft
-              ? 'hover:text-white hover:scale-105 active:scale-95 hover:bg-[#1a163b] hover:border-[#5c64f2]/80 cursor-pointer shadow-md'
-              : 'opacity-30 cursor-not-allowed'
-              }`}
+            className="w-10 h-10 rounded-full bg-[#1a163b]/80 border border-[#5c64f2]/40 flex items-center justify-center text-white/80 transition-all duration-200 hover:text-white hover:scale-105 active:scale-95 hover:bg-[#1a163b] hover:border-[#5c64f2]/80 cursor-pointer shadow-md"
             aria-label="Desplazar a la izquierda"
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
@@ -303,11 +288,7 @@ export default function AwardsCarousel() {
 
           <button
             onClick={() => scroll('right')}
-            disabled={!canScrollRight}
-            className={`w-10 h-10 rounded-full bg-[#1a163b]/80 border border-[#5c64f2]/40 flex items-center justify-center text-white/80 transition-all duration-200 ${canScrollRight
-              ? 'hover:text-white hover:scale-105 active:scale-95 hover:bg-[#1a163b] hover:border-[#5c64f2]/80 cursor-pointer shadow-md'
-              : 'opacity-30 cursor-not-allowed'
-              }`}
+            className="w-10 h-10 rounded-full bg-[#1a163b]/80 border border-[#5c64f2]/40 flex items-center justify-center text-white/80 transition-all duration-200 hover:text-white hover:scale-105 active:scale-95 hover:bg-[#1a163b] hover:border-[#5c64f2]/80 cursor-pointer shadow-md"
             aria-label="Desplazar a la derecha"
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">

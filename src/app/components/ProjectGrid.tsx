@@ -108,7 +108,7 @@ export default function ProjectGrid() {
         </div>
 
         {/* Row 2: Inactive / Coming Soon Brands */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 w-full max-w-4xl mt-2 justify-center" data-node-id="3:2595">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 w-full max-w-4xl mt-2 justify-center" data-node-id="3:2595">
           {secondRowProjects.map((project) => (
             <div
               key={project.id}
@@ -125,7 +125,7 @@ export default function ProjectGrid() {
                   className="object-cover grayscale-[20%] brightness-[0.75]"
                   src={project.image}
                   fill
-                  sizes="(max-width: 640px) 100vw, 33vw"
+                  sizes="(max-width: 640px) 50vw, 33vw"
                 />
               </div>
             </div>
