@@ -33,7 +33,7 @@ export default function Navbar() {
             className="hover:text-white hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
             data-node-id="3:2638"
           >
-            Marcas
+            Empresas
           </button>
 
           <button
