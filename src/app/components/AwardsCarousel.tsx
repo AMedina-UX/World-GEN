@@ -30,11 +30,7 @@ const awards: Award[] = [
     name: 'ABE',
     image: '/assets/abe.png',
   },
-  {
-    year: '',
-    name: 'SNI',
-    image: '/assets/sni.png',
-  },
+
   {
     year: '',
     name: 'CEDU',

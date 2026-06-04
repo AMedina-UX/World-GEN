@@ -34,7 +34,6 @@ export default function Home() {
       {/* Footer */}
       <footer className="w-full py-10 border-t border-white/5 relative z-10 flex flex-col items-center gap-2 text-center text-xs text-white/40">
         <p>© {new Date().getFullYear()} World GEN. Todos los derechos reservados.</p>
-        <p className="text-white/20 font-light">El nuevo mundo para la nueva generación.</p>
       </footer>
     </div>
   );
