@@ -1,12 +1,24 @@
+'use client';
+
 import Image from 'next/image';
 
 export default function Hero() {
-  return (
-    <section className="relative flex flex-col items-center justify-center pt-44 pb-20 px-4 w-full overflow-hidden" data-node-id="1:834">
+  const scrollToBrands = () => {
+    const el = document.getElementById('marcas');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
-      {/* Huge background glow isotipo "X" */}
+  return (
+    <section
+      className="relative flex flex-col items-center justify-center min-h-screen h-screen w-full overflow-hidden px-4 select-none"
+      data-node-id="21:1393"
+    >
+
+      {/* Huge background glow isotipo "X" (larger in the new design, fully scalable) */}
       <div
-        className="absolute -top-10 sm:top-10 w-[280px] h-[280px] sm:w-[400px] sm:h-[400px] opacity-[0.15] pointer-events-none select-none blur-[2px] animate-pulse"
+        className="absolute w-[min(598px,70vw)] aspect-[598/633] opacity-[0.12] pointer-events-none blur-[1px] animate-pulse"
         style={{ animationDuration: '4s' }}
         data-node-id="1:1074"
       >
@@ -20,30 +32,65 @@ export default function Hero() {
       </div>
 
       {/* Main Slogan Container */}
-      <div className="relative z-10 flex flex-col items-center gap-6 max-w-xl text-center" data-node-id="3:254">
+      <div className="relative z-10 flex flex-col items-center gap-[4%] w-full max-w-3xl text-center px-4" data-node-id="3:254">
 
-        {/* World GEN Typo SVG Logo */}
-        <div className="relative w-[320px] h-[48px] sm:w-[500px] sm:h-[80px]" data-node-id="3:257">
+        {/* World GEN Typo SVG Logo (Updated version, scales dynamically) */}
+        <div className="relative w-[min(598px,85vw)] aspect-[598/90]" data-node-id="3:257">
           <Image
             alt="WORLD GEN Logo"
             className="object-contain"
-            src="/assets/a9a1dab005b82b1eac4b974d22b3182f13811a0b.svg"
+            src="/assets/6f47a5b2ff68649fda120d1db2802308a9822d67.svg"
             fill
             priority
           />
         </div>
 
-        {/* Subtitle / Slogan description */}
+        {/* Horizontal line divider (Scales dynamically) */}
+        <div className="relative w-[min(310px,45vw)] aspect-[310/2] opacity-60 my-2" data-node-id="21:1516">
+          <Image
+            alt="Divider"
+            src="/assets/2a638ff72dd2192bdba9d1c5987fa260a6246bba.svg"
+            fill
+            className="object-contain"
+          />
+        </div>
+
+        {/* Subtitle / Slogan description (Fluid typography scaling) */}
         <p
-          className="text-base sm:text-2xl font-light text-[#d2d5fc] leading-relaxed max-w-xl mt-2 tracking-wide font-sans"
+          className="text-[clamp(14px,2vw,24px)] font-medium text-[#d2d5fc] leading-relaxed max-w-3xl mt-1 tracking-wide font-sans px-2"
           data-node-id="3:251"
         >
-          El primer consorcio de la industria, el nuevo mundo para la nueva generación.
+          EL PRIMER HOLDING DE EMPRESAS DE LA INDUSTRIA EN UN SOLO PLAN DE COMPENSACIÓN
         </p>
       </div>
 
-      {/* Subtle bottom light overlay */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[60%] h-[150px] bg-gradient-radial from-[#5f4cbf]/10 to-transparent blur-[60px] pointer-events-none" />
+      {/* Bottom Scroll Indicator */}
+      <div
+        onClick={scrollToBrands}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 cursor-pointer transition-all duration-300 hover:scale-105 active:scale-95 group"
+        data-node-id="21:1515"
+      >
+        <span
+          className="text-[clamp(10px,1.2vw,14px)] font-medium tracking-widest text-[#d2d5fc]/85 group-hover:text-white transition-colors duration-300 uppercase"
+          data-node-id="21:1514"
+        >
+          Ve nuestras empresas
+        </span>
+        <div
+          className="relative w-8 h-8 sm:w-10 sm:h-10 animate-bounce-slow"
+          data-node-id="21:1513"
+        >
+          <Image
+            alt="Scroll Down"
+            src="/assets/f542452e8ff4c6bdaa9e5358fa856e1ffb4a91ac.svg"
+            fill
+            className="object-contain brightness-[0.8] group-hover:brightness-100 transition-all duration-300"
+          />
+        </div>
+      </div>
+
+      {/* Ambient bottom light overlay */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[70%] h-[200px] bg-gradient-radial from-[#5f4cbf]/10 to-transparent blur-[80px] pointer-events-none" />
     </section>
   );
 }

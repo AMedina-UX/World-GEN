@@ -12,6 +12,7 @@
   
   --animate-carousel: carousel 50s linear infinite;
   --animate-carousel-reverse: carousel-reverse 50s linear infinite;
+  --animate-bounce-slow: bounce-slow 2s infinite ease-in-out;
 }
 
 @keyframes carousel {
@@ -29,6 +30,17 @@
   }
   100% {
     transform: translateX(0);
+  }
+}
+
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(10px);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
   }
 }
 

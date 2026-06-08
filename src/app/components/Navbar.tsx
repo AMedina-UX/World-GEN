@@ -37,19 +37,11 @@ export default function Navbar() {
           </button>
 
           <button
-            onClick={() => handleScroll('premios')}
+            onClick={() => handleScroll('ecosistema')}
             className="hover:text-white hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
             data-node-id="3:2675"
           >
-            Premios
-          </button>
-
-          <button
-            onClick={() => handleScroll('alianzas')}
-            className="hover:text-white hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
-            data-node-id="3:2666"
-          >
-            Alianzas
+            Ecosistema
           </button>
         </div>
       </div>
