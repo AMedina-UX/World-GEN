@@ -22,7 +22,7 @@ const cards: EspaciosCard[] = [
     id: '45:714',
     name: 'Oficinas Centrales',
     image: '/assets/ed1de8b212589b1b246e80c0fa6d758657bb1e68.png',
-    link: 'https://mined.world/',
+    link: 'https://equipogen.com/quienes-somos/#oficinas',
     imageWidth: 'w-[130%]',
     imageHeight: 'h-[100%]',
     imageOffsetLeft: '-left-[15%]',
