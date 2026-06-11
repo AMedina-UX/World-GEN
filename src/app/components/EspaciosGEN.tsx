@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-interface EcosistemaCard {
+interface EspaciosCard {
   id: string;
   name: string;
   image: string;
@@ -11,52 +11,50 @@ interface EcosistemaCard {
   imageOffsetTop: string;
 }
 
-const cards: EcosistemaCard[] = [
+const cards: EspaciosCard[] = [
   {
-    id: '23:733',
-    name: 'PREMIOS',
-    image: '/assets/befb3e7b0c03e01e97ecb1bc106448987710dece.png',
-    link: 'https://mined.world/reconocimientos/#premios',
-    imageWidth: 'w-[130%] sm:w-[130%]',
+    id: '45:714',
+    name: 'Oficinas Centrales',
+    image: '/assets/ed1de8b212589b1b246e80c0fa6d758657bb1e68.png',
+    link: 'https://mined.world/',
+    imageWidth: 'w-[130%]',
     imageHeight: 'h-[100%]',
     imageOffsetLeft: '-left-[15%]',
     imageOffsetTop: 'top-0',
   },
   {
-    id: '23:734',
-    name: 'CERTIFICACIONES Y ALIANZAS',
-    image: '/assets/31eecd1ac847f83137e119da89febe00a5e9724b.png',
-    link: 'https://mined.world/reconocimientos/#alizanzas',
-    imageWidth: 'w-[135%]',
-    imageHeight: 'h-[103%]',
-    imageOffsetLeft: '-left-[18%]',
+    id: '45:716',
+    name: 'Salas de Capacitación',
+    image: '/assets/ef995749ed317516a4743f08762757f1b9a5c0bc.png',
+    link: 'https://mined.world/',
+    imageWidth: 'w-[130%]',
+    imageHeight: 'h-[100%]',
+    imageOffsetLeft: '-left-[15%]',
     imageOffsetTop: 'top-0',
   },
   {
-    id: '23:736',
-    name: 'PRENSA',
-    image: '/assets/28aa84008829500de8124363b087227b1bc77387.png',
-    link: 'https://mined.world/reconocimientos/#prensa',
-    imageWidth: 'w-[136%]',
-    imageHeight: 'h-[106%]',
-    imageOffsetLeft: '-left-[18%]',
-    imageOffsetTop: '-top-[3%]',
+    id: '45:718',
+    name: 'Zonas Coworking',
+    image: '/assets/06dcc457b89b569f32107551c3b5aff5bd68dc82.png',
+    link: 'https://mined.world/',
+    imageWidth: 'w-[130%]',
+    imageHeight: 'h-[100%]',
+    imageOffsetLeft: '-left-[15%]',
+    imageOffsetTop: 'top-0',
   },
 ];
 
-export default function Ecosistema() {
+export default function EspaciosGEN() {
   return (
     <section
-      id="ecosistema"
+      id="espacios-gen"
       className="w-full max-w-6xl mx-auto px-4 pt-4 pb-6 scroll-mt-28 flex flex-col items-center gap-2"
-      data-node-id="23:738"
     >
       {/* Title */}
       <h2
         className="text-3xl md:text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#d2d5fc] to-[#a0a5fa] font-sans text-center"
-        data-node-id="22:1529"
       >
-        Explora nuestro ecosistema
+        Espacios GEN
       </h2>
 
       {/* 3 Cards Container Grid */}
@@ -87,6 +85,13 @@ export default function Ecosistema() {
                   sizes="380px"
                 />
               </div>
+            </div>
+
+            {/* Bottom text label */}
+            <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pt-8 pb-4 px-5 z-20">
+              <p className="font-sans font-semibold text-xs tracking-wider text-white/90 uppercase drop-shadow-md">
+                {card.name}
+              </p>
             </div>
           </a>
         ))}

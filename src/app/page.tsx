@@ -2,6 +2,9 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ProjectGrid from './components/ProjectGrid';
 import Ecosistema from './components/Ecosistema';
+import Comunidad from './components/Comunidad';
+import EspaciosGEN from './components/EspaciosGEN';
+import Corporativo from './components/Corporativo';
 import Footer from './components/Footer';
 
 export default function Home() {
@@ -18,7 +21,7 @@ export default function Home() {
 
       {/* Main Content Sections */}
       <main className="w-full flex-1 flex flex-col items-center relative z-10">
-        
+
         {/* Fullscreen Hero Header */}
         <Hero />
 
@@ -26,10 +29,28 @@ export default function Home() {
         <ProjectGrid />
 
         {/* Section divider line */}
-        <div className="w-48 h-[1px] bg-gradient-to-r from-transparent via-[#5c64f2]/30 to-transparent my-10" />
+        <div className="w-48 h-[1px] bg-gradient-to-r from-transparent via-[#5c64f2]/30 to-transparent mb-8" />
 
         {/* Ecosistema Section (3 Cards) */}
         <Ecosistema />
+
+        {/* Section divider line */}
+        <div className="w-48 h-[1px] bg-gradient-to-r from-transparent via-[#5c64f2]/30 to-transparent my-8" />
+
+        {/* Comunidad Section (3 Cards) */}
+        <Comunidad />
+
+        {/* Section divider line */}
+        <div className="w-48 h-[1px] bg-gradient-to-r from-transparent via-[#5c64f2]/30 to-transparent my-8" />
+
+        {/* Espacios GEN Section (3 Cards) */}
+        <EspaciosGEN />
+
+        {/* Section divider line */}
+        <div className="w-48 h-[1px] bg-gradient-to-r from-transparent via-[#5c64f2]/30 to-transparent my-8" />
+
+        {/* Corporativo Section (3 Cards) */}
+        <Corporativo />
 
       </main>
 
