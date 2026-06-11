@@ -48,7 +48,7 @@ export default function Corporativo() {
   return (
     <section
       id="corporativo"
-      className="w-full max-w-6xl mx-auto px-4 pt-4 pb-10 scroll-mt-28 flex flex-col items-center gap-2"
+      className="w-full max-w-6xl mx-auto px-4 pt-4 pb-6 scroll-mt-28 flex flex-col items-center gap-2"
     >
       {/* Title */}
       <h2
