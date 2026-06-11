@@ -40,7 +40,7 @@ export default function VideoModal({ isOpen, onClose, videoUrl }: VideoModalProp
   return (
     <div
       onClick={handleBackdropClick}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md transition-opacity duration-300 animate-fadeIn"
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/85 backdrop-blur-md transition-opacity duration-300 animate-fadeIn"
       role="dialog"
       aria-modal="true"
     >

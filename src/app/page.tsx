@@ -20,7 +20,7 @@ export default function Home() {
       <Navbar />
 
       {/* Main Content Sections */}
-      <main className="w-full flex-1 flex flex-col items-center relative z-10">
+      <main className="w-full flex-1 flex flex-col items-center relative">
 
         {/* Fullscreen Hero Header */}
         <Hero />

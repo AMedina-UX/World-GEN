@@ -14,9 +14,9 @@ interface CorporativoCard {
 const cards: CorporativoCard[] = [
   {
     id: '45:724',
-    name: 'Nuestra Visión',
+    name: 'Oficinas',
     image: '/assets/00a8a37c08dafc76cb1e42046b74b80bd9ea6f28.png',
-    link: 'https://mined.world/',
+    link: 'https://equipogen.com/quienes-somos/#oficinas',
     imageWidth: 'w-[130%]',
     imageHeight: 'h-[100%]',
     imageOffsetLeft: '-left-[15%]',
@@ -24,9 +24,9 @@ const cards: CorporativoCard[] = [
   },
   {
     id: '45:726',
-    name: 'Gobierno Corporativo',
+    name: 'Liderazgo',
     image: '/assets/384afdd52e6f542e56a00c19d69067afdc6609ff.png',
-    link: 'https://mined.world/',
+    link: 'https://equipogen.com/quienes-somos/#liderazgo',
     imageWidth: 'w-[130%]',
     imageHeight: 'h-[100%]',
     imageOffsetLeft: '-left-[15%]',
@@ -34,9 +34,9 @@ const cards: CorporativoCard[] = [
   },
   {
     id: '45:728',
-    name: 'Sostenibilidad',
+    name: 'Responsabilidad Social',
     image: '/assets/4e31d3aa5ed1e5dfa9ceb1cf96ba2c356f61f135.png',
-    link: 'https://mined.world/',
+    link: 'https://equipogen.com/quienes-somos/#responsabilidad-social',
     imageWidth: 'w-[130%]',
     imageHeight: 'h-[100%]',
     imageOffsetLeft: '-left-[15%]',
