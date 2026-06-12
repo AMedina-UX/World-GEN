@@ -19,7 +19,7 @@ interface ComunidadCard {
 const cards: ComunidadCard[] = [
   {
     id: '45:684',
-    name: 'Lanzamiento World GEN',
+    name: 'Bonos viajes',
     image: '/assets/1ae28c11dac8d169cdafe59af87ef30f3971b78d.png',
     videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
     imageWidth: 'w-[130%]',
@@ -29,7 +29,7 @@ const cards: ComunidadCard[] = [
   },
   {
     id: '45:686',
-    name: 'Experiencia de Liderazgo',
+    name: 'Bonos Autos',
     image: '/assets/6b1c53597a7f6437d49f0d66f86059064c1d6251.png',
     videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
     imageWidth: 'w-[130%]',
@@ -39,7 +39,7 @@ const cards: ComunidadCard[] = [
   },
   {
     id: '45:688',
-    name: 'Conoce a nuestros Embajadores',
+    name: 'Salón de la conquista',
     image: '/assets/e867af03550cdce99d07c9976f4c8114a77815ea.png',
     link: 'https://mined.world/reconocimientos/#premios',
     imageWidth: 'w-[130%]',
