@@ -10,6 +10,11 @@ interface ComunidadCard {
   image: string;
   link?: string;
   videoUrl?: string;
+  videoSources?: {
+    '360p'?: string;
+    '720p'?: string;
+    '1080p'?: string;
+  };
   imageWidth: string;
   imageHeight: string;
   imageOffsetLeft: string;
@@ -31,7 +36,12 @@ const cards: ComunidadCard[] = [
     id: '45:686',
     name: 'Bonos Autos',
     image: '/assets/BONOS_AUTOS.png',
-    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+    videoUrl: 'https://media.minedacademy.com/media/videos/videos-marketing/bonoauto-worldgen-ultra25/720p.mp4',
+    videoSources: {
+      '360p': 'https://media.minedacademy.com/media/videos/videos-marketing/bonoauto-worldgen-ultra25/360p.mp4',
+      '720p': 'https://media.minedacademy.com/media/videos/videos-marketing/bonoauto-worldgen-ultra25/720p.mp4',
+      '1080p': 'https://media.minedacademy.com/media/videos/videos-marketing/bonoauto-worldgen-ultra25/1080p.mp4',
+    },
     imageWidth: 'w-[100%]',
     imageHeight: 'h-[100%]',
     imageOffsetLeft: 'left-0',
@@ -50,7 +60,7 @@ const cards: ComunidadCard[] = [
 ];
 
 export default function Comunidad() {
-  const [videoUrl, setVideoUrl] = useState<string | null>(null);
+  const [activeVideo, setActiveVideo] = useState<{ url: string; sources?: { '360p'?: string; '720p'?: string; '1080p'?: string } } | null>(null);
 
   return (
     <section
@@ -114,7 +124,7 @@ export default function Comunidad() {
             return (
               <button
                 key={card.id}
-                onClick={() => setVideoUrl(card.videoUrl!)}
+                onClick={() => setActiveVideo({ url: card.videoUrl!, sources: card.videoSources })}
                 className="group relative block w-full aspect-[1/1] rounded-2xl overflow-hidden border border-[#5c64f2]/30 bg-black/40 shadow-[0_4px_20px_rgba(71,3,166,0.15)] transition-all duration-500 ease-out hover:border-[#5c64f2]/80 hover:shadow-[0_0_35px_5px_rgba(92,100,242,0.35)] cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-[#5c64f2]/60"
                 data-node-id={card.id}
               >
@@ -139,9 +149,10 @@ export default function Comunidad() {
       </div>
 
       <VideoModal
-        isOpen={videoUrl !== null}
-        onClose={() => setVideoUrl(null)}
-        videoUrl={videoUrl || ''}
+        isOpen={activeVideo !== null}
+        onClose={() => setActiveVideo(null)}
+        videoUrl={activeVideo?.url || ''}
+        videoSources={activeVideo?.sources}
       />
     </section>
   );
