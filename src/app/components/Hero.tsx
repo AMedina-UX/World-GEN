@@ -27,6 +27,7 @@ export default function Hero() {
           className="object-contain"
           src="/assets/fdc4339d52c05bf9c95ac2ed13b398ff1090cc2a.png"
           fill
+          sizes="(max-width: 768px) 70vw, 598px"
           priority
         />
       </div>
@@ -41,6 +42,7 @@ export default function Hero() {
             className="object-contain"
             src="/assets/6f47a5b2ff68649fda120d1db2802308a9822d67.svg"
             fill
+            sizes="(max-width: 768px) 85vw, 598px"
             priority
           />
         </div>
@@ -51,6 +53,7 @@ export default function Hero() {
             alt="Divider"
             src="/assets/2a638ff72dd2192bdba9d1c5987fa260a6246bba.svg"
             fill
+            sizes="(max-width: 768px) 45vw, 310px"
             className="object-contain"
           />
         </div>
@@ -84,6 +87,7 @@ export default function Hero() {
             alt="Scroll Down"
             src="/assets/f542452e8ff4c6bdaa9e5358fa856e1ffb4a91ac.svg"
             fill
+            sizes="(max-width: 640px) 32px, 40px"
             className="object-contain brightness-[0.8] group-hover:brightness-100 transition-all duration-300"
           />
         </div>

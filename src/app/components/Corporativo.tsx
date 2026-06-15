@@ -14,12 +14,12 @@ interface CorporativoCard {
 const cards: CorporativoCard[] = [
   {
     id: '45:724',
-    name: 'Oficinas',
+    name: 'Historia',
     image: '/assets/00a8a37c08dafc76cb1e42046b74b80bd9ea6f28.png',
-    link: 'https://equipogen.com/quienes-somos/#oficinas',
-    imageWidth: 'w-[130%]',
+    link: 'https://equipogen.com/quienes-somos/#historia',
+    imageWidth: 'w-[100%]',
     imageHeight: 'h-[100%]',
-    imageOffsetLeft: '-left-[15%]',
+    imageOffsetLeft: 'left-0',
     imageOffsetTop: 'top-0',
   },
   {
@@ -27,9 +27,9 @@ const cards: CorporativoCard[] = [
     name: 'Liderazgo',
     image: '/assets/384afdd52e6f542e56a00c19d69067afdc6609ff.png',
     link: 'https://equipogen.com/quienes-somos/#liderazgo',
-    imageWidth: 'w-[130%]',
+    imageWidth: 'w-[100%]',
     imageHeight: 'h-[100%]',
-    imageOffsetLeft: '-left-[15%]',
+    imageOffsetLeft: 'left-0',
     imageOffsetTop: 'top-0',
   },
   {
@@ -37,9 +37,9 @@ const cards: CorporativoCard[] = [
     name: 'Responsabilidad Social',
     image: '/assets/4e31d3aa5ed1e5dfa9ceb1cf96ba2c356f61f135.png',
     link: 'https://equipogen.com/quienes-somos/#responsabilidad-social',
-    imageWidth: 'w-[130%]',
+    imageWidth: 'w-[100%]',
     imageHeight: 'h-[100%]',
-    imageOffsetLeft: '-left-[15%]',
+    imageOffsetLeft: 'left-0',
     imageOffsetTop: 'top-0',
   },
 ];
@@ -48,7 +48,7 @@ export default function Corporativo() {
   return (
     <section
       id="corporativo"
-      className="w-full max-w-6xl mx-auto px-4 pt-4 mb-20 scroll-mt-28 flex flex-col items-center gap-2"
+      className="w-full max-w-7xl mx-auto px-4 sm:px-10 pt-4 mb-20 scroll-mt-28 flex flex-col items-center gap-2"
     >
       {/* Title */}
       <h2
@@ -58,14 +58,14 @@ export default function Corporativo() {
       </h2>
 
       {/* 3 Cards Container Grid */}
-      <div className="flex flex-col sm:flex-row gap-6 md:gap-8 justify-center items-center w-full max-w-4xl mt-8">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 w-full mt-8">
         {cards.map((card) => (
           <a
             key={card.id}
             href={card.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative block w-[283px] h-[283px] rounded-2xl overflow-hidden border border-[#5c64f2]/30 bg-black/40 shadow-[0_4px_20px_rgba(71,3,166,0.15)] transition-all duration-500 ease-out hover:-translate-y-3 hover:scale-[1.03] hover:border-[#5c64f2]/80 hover:shadow-[0_0_35px_5px_rgba(92,100,242,0.35)]"
+            className="group relative block w-full aspect-[1/1] rounded-2xl overflow-hidden border border-[#5c64f2]/30 bg-black/40 shadow-[0_4px_20px_rgba(71,3,166,0.15)] transition-all duration-500 ease-out hover:border-[#5c64f2]/80 hover:shadow-[0_0_35px_5px_rgba(92,100,242,0.35)]"
             data-node-id={card.id}
           >
             {/* Card inner border overlay */}
@@ -76,23 +76,18 @@ export default function Corporativo() {
 
             {/* Figma-matched positioning box */}
             <div className="absolute inset-0 w-full h-full overflow-hidden">
-              <div className={`absolute ${card.imageWidth} ${card.imageHeight} ${card.imageOffsetLeft} ${card.imageOffsetTop} transition-transform duration-700 ease-out group-hover:scale-105`}>
+              <div className={`absolute ${card.imageWidth} ${card.imageHeight} ${card.imageOffsetLeft} ${card.imageOffsetTop} transition-transform duration-700 ease-out group-hover:scale-100`}>
                 <Image
                   alt={card.name}
                   src={card.image}
                   className="object-cover pointer-events-none"
                   fill
-                  sizes="380px"
+                  sizes="(max-width: 640px) 50vw, 33vw"
                 />
               </div>
             </div>
 
-            {/* Bottom text label */}
-            <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pt-8 pb-4 px-5 z-20">
-              <p className="font-sans font-semibold text-xs tracking-wider text-white/90 uppercase drop-shadow-md">
-                {card.name}
-              </p>
-            </div>
+
           </a>
         ))}
       </div>

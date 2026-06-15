@@ -11,11 +11,12 @@ export default function Footer() {
 
         {/* Branding & Logo Left Block */}
         <div className="flex flex-col gap-8 items-start w-full md:w-[220px]" data-node-id="27:990">
-          <div className="relative w-full h-[32px]" data-node-id="27:991">
+          <div className="relative w-[220px] h-[32px]" data-node-id="27:991">
             <Image
               alt="WORLD GEN Logo"
               src="/assets/c4bbba1b6a02655338cb238d10f36d1af4342c0b.svg"
               fill
+              sizes="220px"
               className="object-contain"
             />
           </div>
@@ -81,6 +82,7 @@ export default function Footer() {
                     alt="MINED Logo"
                     src="/assets/395ecce46f87796c93e731a21920ed6c9c439df2.svg"
                     fill
+                    sizes="80px"
                     className="object-contain"
                   />
                 </div>
@@ -99,6 +101,7 @@ export default function Footer() {
                     alt="FWP Logo"
                     src="/assets/2cd0c637c33f63418a5bed4e1020e742c0e7648c.svg"
                     fill
+                    sizes="50px"
                     className="object-contain"
                   />
                 </div>
@@ -126,7 +129,7 @@ export default function Footer() {
 
           {/* Instagram */}
           <a
-            href="https://www.instagram.com/equipo_gen_oficial/"
+            href="https://www.instagram.com/world_gen_oficial/"
             target="_blank"
             rel="noopener noreferrer"
             className="relative w-6 h-6 hover:scale-110 active:scale-95 transition-all duration-200 hover:brightness-125"
@@ -134,7 +137,7 @@ export default function Footer() {
           >
             {/* The instagram icon is composed in figma, but we can overlay them inside absolute layout or simple icons */}
             <div className="absolute inset-0">
-              <Image alt="Instagram border" src="/assets/instagram.svg" fill className="object-contain brightness-0 invert" />
+              <Image alt="Instagram border" src="/assets/instagram.svg" fill sizes="24px" className="object-contain brightness-0 invert" />
             </div>
           </a>
 
@@ -146,7 +149,7 @@ export default function Footer() {
             className="relative w-6 h-6 hover:scale-110 active:scale-95 transition-all duration-200 hover:brightness-125"
             data-node-id="27:1011"
           >
-            <Image alt="Telegram" src="/assets/830d4f280e41b241aa5de003fbc03461e34bf24a.svg" fill className="object-contain" />
+            <Image alt="Telegram" src="/assets/830d4f280e41b241aa5de003fbc03461e34bf24a.svg" fill sizes="24px" className="object-contain" />
           </a>
 
           {/* Facebook */}
@@ -157,7 +160,7 @@ export default function Footer() {
             className="relative w-6 h-6 hover:scale-110 active:scale-95 transition-all duration-200 hover:brightness-125"
             data-node-id="27:1013"
           >
-            <Image alt="Facebook" src="/assets/e1687911e93a45bcbba63b572121a98fbf37b72a.svg" fill className="object-contain" />
+            <Image alt="Facebook" src="/assets/e1687911e93a45bcbba63b572121a98fbf37b72a.svg" fill sizes="24px" className="object-contain" />
           </a>
 
           {/* YouTube */}
@@ -168,7 +171,7 @@ export default function Footer() {
             className="relative w-6 h-6 hover:scale-110 active:scale-95 transition-all duration-200 hover:brightness-125"
             data-node-id="27:1014"
           >
-            <Image alt="YouTube" src="/assets/db188578000d1724140314615cefc1c59117f418.svg" fill className="object-contain" />
+            <Image alt="YouTube" src="/assets/db188578000d1724140314615cefc1c59117f418.svg" fill sizes="24px" className="object-contain" />
           </a>
 
           {/* TikTok */}
@@ -179,7 +182,7 @@ export default function Footer() {
             className="relative w-6 h-6 hover:scale-110 active:scale-95 transition-all duration-200 hover:brightness-125"
             data-node-id="27:1015"
           >
-            <Image alt="TikTok" src="/assets/30f5d5b979420976bb8924b57f5d2e46c4b92a20.svg" fill className="object-contain" />
+            <Image alt="TikTok" src="/assets/30f5d5b979420976bb8924b57f5d2e46c4b92a20.svg" fill sizes="24px" className="object-contain" />
           </a>
 
           {/* Mixlr */}
@@ -190,7 +193,7 @@ export default function Footer() {
             className="relative w-6 h-6 hover:scale-110 active:scale-95 transition-all duration-200 hover:brightness-125"
             data-node-id="27:1017"
           >
-            <Image alt="Mixlr" src="/assets/79f64d1d6a459cd86cb00718d5d777cf716b036f.svg" fill className="object-contain" />
+            <Image alt="Mixlr" src="/assets/79f64d1d6a459cd86cb00718d5d777cf716b036f.svg" fill sizes="24px" className="object-contain" />
           </a>
 
         </div>

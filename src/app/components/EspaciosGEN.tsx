@@ -21,11 +21,11 @@ const cards: EspaciosCard[] = [
   {
     id: '45:714',
     name: 'Oficinas Centrales',
-    image: '/assets/ed1de8b212589b1b246e80c0fa6d758657bb1e68.png',
+    image: '/assets/OFICINAS.png',
     link: 'https://equipogen.com/quienes-somos/#oficinas',
-    imageWidth: 'w-[130%]',
+    imageWidth: 'w-[100%]',
     imageHeight: 'h-[100%]',
-    imageOffsetLeft: '-left-[15%]',
+    imageOffsetLeft: 'left-0',
     imageOffsetTop: 'top-0',
   },
   {
@@ -33,9 +33,9 @@ const cards: EspaciosCard[] = [
     name: 'Reserva aquí',
     image: '/assets/ef995749ed317516a4743f08762757f1b9a5c0bc.png',
     disabled: true,
-    imageWidth: 'w-[130%]',
+    imageWidth: 'w-[100%]',
     imageHeight: 'h-[100%]',
-    imageOffsetLeft: '-left-[15%]',
+    imageOffsetLeft: 'left-0',
     imageOffsetTop: 'top-0',
   },
   {
@@ -43,9 +43,9 @@ const cards: EspaciosCard[] = [
     name: 'Centros de distribución',
     image: '/assets/06dcc457b89b569f32107551c3b5aff5bd68dc82.png',
     isModal: true,
-    imageWidth: 'w-[130%]',
+    imageWidth: 'w-[100%]',
     imageHeight: 'h-[100%]',
-    imageOffsetLeft: '-left-[15%]',
+    imageOffsetLeft: 'left-0',
     imageOffsetTop: 'top-0',
   },
 ];
@@ -56,7 +56,7 @@ export default function EspaciosGEN() {
   return (
     <section
       id="espacios-gen"
-      className="w-full max-w-6xl mx-auto px-4 pt-4 pb-6 scroll-mt-28 flex flex-col items-center gap-2"
+      className="w-full max-w-7xl mx-auto px-4 sm:px-10 pt-4 pb-6 scroll-mt-28 flex flex-col items-center gap-2"
     >
       {/* Title */}
       <h2
@@ -66,7 +66,7 @@ export default function EspaciosGEN() {
       </h2>
 
       {/* 3 Cards Container Grid */}
-      <div className="flex flex-col sm:flex-row gap-6 md:gap-8 justify-center items-center w-full max-w-4xl mt-8">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 w-full mt-8">
         {cards.map((card) => {
           const cardInnerContent = (
             <>
@@ -80,23 +80,17 @@ export default function EspaciosGEN() {
 
               {/* Figma-matched positioning box */}
               <div className="absolute inset-0 w-full h-full overflow-hidden">
-                <div className={`absolute ${card.imageWidth} ${card.imageHeight} ${card.imageOffsetLeft} ${card.imageOffsetTop} transition-transform duration-700 ease-out ${!card.disabled ? 'group-hover:scale-105' : 'grayscale-[40%]'}`}>
+                <div className={`absolute ${card.imageWidth} ${card.imageHeight} ${card.imageOffsetLeft} ${card.imageOffsetTop} transition-transform duration-700 ease-out ${!card.disabled ? 'group-hover:scale-100' : 'grayscale-[40%]'}`}>
                   <Image
                     alt={card.name}
                     src={card.image}
                     className="object-cover pointer-events-none"
                     fill
-                    sizes="380px"
+                    sizes="(max-width: 640px) 50vw, 33vw"
                   />
                 </div>
               </div>
 
-              {/* Bottom text label */}
-              <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pt-8 pb-4 px-5 z-20">
-                <p className="font-sans font-semibold text-xs tracking-wider text-white/90 uppercase drop-shadow-md">
-                  {card.name}
-                </p>
-              </div>
 
               {/* Locked overlay for disabled card */}
               {card.disabled && (
@@ -129,7 +123,7 @@ export default function EspaciosGEN() {
             return (
               <div
                 key={card.id}
-                className="relative block w-[283px] h-[283px] rounded-2xl overflow-hidden border border-[#5c64f2]/10 bg-black/20 opacity-60 shadow-[0_4px_20px_rgba(0,0,0,0.2)] cursor-not-allowed"
+                className="relative block w-full aspect-[1/1] rounded-2xl overflow-hidden border border-[#5c64f2]/10 bg-black/20 opacity-60 shadow-[0_4px_20px_rgba(0,0,0,0.2)] cursor-not-allowed"
                 data-node-id={card.id}
               >
                 {cardInnerContent}
@@ -143,7 +137,7 @@ export default function EspaciosGEN() {
                 key={card.id}
                 onClick={() => setIsModalOpen(true)}
                 type="button"
-                className="group relative block w-[283px] h-[283px] rounded-2xl overflow-hidden border border-[#5c64f2]/30 bg-black/40 shadow-[0_4px_20px_rgba(71,3,166,0.15)] transition-all duration-500 ease-out hover:-translate-y-3 hover:scale-[1.03] hover:border-[#5c64f2]/80 hover:shadow-[0_0_35px_5px_rgba(92,100,242,0.35)] cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-[#5c64f2]/60"
+                className="group relative block w-full aspect-[1/1] rounded-2xl overflow-hidden border border-[#5c64f2]/30 bg-black/40 shadow-[0_4px_20px_rgba(71,3,166,0.15)] transition-all duration-500 ease-out hover:border-[#5c64f2]/80 hover:shadow-[0_0_35px_5px_rgba(92,100,242,0.35)] cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-[#5c64f2]/60"
                 data-node-id={card.id}
               >
                 {cardInnerContent}
@@ -157,7 +151,7 @@ export default function EspaciosGEN() {
               href={card.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative block w-[283px] h-[283px] rounded-2xl overflow-hidden border border-[#5c64f2]/30 bg-black/40 shadow-[0_4px_20px_rgba(71,3,166,0.15)] transition-all duration-500 ease-out hover:-translate-y-3 hover:scale-[1.03] hover:border-[#5c64f2]/80 hover:shadow-[0_0_35px_5px_rgba(92,100,242,0.35)]"
+              className="group relative block w-full aspect-[1/1] rounded-2xl overflow-hidden border border-[#5c64f2]/30 bg-black/40 shadow-[0_4px_20px_rgba(71,3,166,0.15)] transition-all duration-500 ease-out hover:border-[#5c64f2]/80 hover:shadow-[0_0_35px_5px_rgba(92,100,242,0.35)]"
               data-node-id={card.id}
             >
               {cardInnerContent}

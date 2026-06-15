@@ -20,31 +20,31 @@ const cards: ComunidadCard[] = [
   {
     id: '45:684',
     name: 'Bonos viajes',
-    image: '/assets/1ae28c11dac8d169cdafe59af87ef30f3971b78d.png',
+    image: '/assets/BONOS_VIAJES.png',
     videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-    imageWidth: 'w-[130%]',
+    imageWidth: 'w-[100%]',
     imageHeight: 'h-[100%]',
-    imageOffsetLeft: '-left-[15%]',
+    imageOffsetLeft: 'left-0',
     imageOffsetTop: 'top-0',
   },
   {
     id: '45:686',
     name: 'Bonos Autos',
-    image: '/assets/6b1c53597a7f6437d49f0d66f86059064c1d6251.png',
+    image: '/assets/BONOS_AUTOS.png',
     videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
-    imageWidth: 'w-[130%]',
+    imageWidth: 'w-[100%]',
     imageHeight: 'h-[100%]',
-    imageOffsetLeft: '-left-[15%]',
+    imageOffsetLeft: 'left-0',
     imageOffsetTop: 'top-0',
   },
   {
     id: '45:688',
     name: 'Salón de la conquista',
-    image: '/assets/e867af03550cdce99d07c9976f4c8114a77815ea.png',
+    image: '/assets/CONQUISTA.png',
     link: 'https://mined.world/reconocimientos/#premios',
-    imageWidth: 'w-[130%]',
+    imageWidth: 'w-[100%]',
     imageHeight: 'h-[100%]',
-    imageOffsetLeft: '-left-[15%]',
+    imageOffsetLeft: 'left-0',
     imageOffsetTop: 'top-0',
   },
 ];
@@ -55,7 +55,7 @@ export default function Comunidad() {
   return (
     <section
       id="comunidad"
-      className="w-full max-w-6xl mx-auto px-4 pt-4 pb-6 scroll-mt-28 flex flex-col items-center gap-2"
+      className="w-full max-w-7xl mx-auto px-4 sm:px-10 pt-4 pb-6 scroll-mt-28 flex flex-col items-center gap-2"
     >
       {/* Title */}
       <h2
@@ -65,7 +65,7 @@ export default function Comunidad() {
       </h2>
 
       {/* 3 Cards Container Grid */}
-      <div className="flex flex-col sm:flex-row gap-6 md:gap-8 justify-center items-center w-full max-w-4xl mt-8">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 w-full mt-8">
         {cards.map((card) => {
           const isVideo = !!card.videoUrl;
 
@@ -79,23 +79,18 @@ export default function Comunidad() {
 
               {/* Figma-matched positioning box */}
               <div className="absolute inset-0 w-full h-full overflow-hidden">
-                <div className={`absolute ${card.imageWidth} ${card.imageHeight} ${card.imageOffsetLeft} ${card.imageOffsetTop} transition-transform duration-700 ease-out group-hover:scale-105`}>
+                <div className={`absolute ${card.imageWidth} ${card.imageHeight} ${card.imageOffsetLeft} ${card.imageOffsetTop} transition-transform duration-700 ease-out group-hover:scale-100`}>
                   <Image
                     alt={card.name}
                     src={card.image}
                     className="object-cover pointer-events-none"
                     fill
-                    sizes="380px"
+                    sizes="(max-width: 640px) 50vw, 33vw"
                   />
                 </div>
               </div>
 
-              {/* Bottom text label */}
-              <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pt-8 pb-4 px-5 z-20">
-                <p className="font-sans font-semibold text-xs tracking-wider text-white/90 uppercase drop-shadow-md">
-                  {card.name}
-                </p>
-              </div>
+
 
               {/* Premium Play Icon overlay for video items */}
               {isVideo && (
@@ -120,7 +115,7 @@ export default function Comunidad() {
               <button
                 key={card.id}
                 onClick={() => setVideoUrl(card.videoUrl!)}
-                className="group relative block w-[283px] h-[283px] rounded-2xl overflow-hidden border border-[#5c64f2]/30 bg-black/40 shadow-[0_4px_20px_rgba(71,3,166,0.15)] transition-all duration-500 ease-out hover:-translate-y-3 hover:scale-[1.03] hover:border-[#5c64f2]/80 hover:shadow-[0_0_35px_5px_rgba(92,100,242,0.35)] cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-[#5c64f2]/60"
+                className="group relative block w-full aspect-[1/1] rounded-2xl overflow-hidden border border-[#5c64f2]/30 bg-black/40 shadow-[0_4px_20px_rgba(71,3,166,0.15)] transition-all duration-500 ease-out hover:border-[#5c64f2]/80 hover:shadow-[0_0_35px_5px_rgba(92,100,242,0.35)] cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-[#5c64f2]/60"
                 data-node-id={card.id}
               >
                 {cardInnerContent}
@@ -134,7 +129,7 @@ export default function Comunidad() {
               href={card.link || '#'}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative block w-[283px] h-[283px] rounded-2xl overflow-hidden border border-[#5c64f2]/30 bg-black/40 shadow-[0_4px_20px_rgba(71,3,166,0.15)] transition-all duration-500 ease-out hover:-translate-y-3 hover:scale-[1.03] hover:border-[#5c64f2]/80 hover:shadow-[0_0_35px_5px_rgba(92,100,242,0.35)]"
+              className="group relative block w-full aspect-[1/1] rounded-2xl overflow-hidden border border-[#5c64f2]/30 bg-black/40 shadow-[0_4px_20px_rgba(71,3,166,0.15)] transition-all duration-500 ease-out  hover:border-[#5c64f2]/80 hover:shadow-[0_0_35px_5px_rgba(92,100,242,0.35)]"
               data-node-id={card.id}
             >
               {cardInnerContent}
