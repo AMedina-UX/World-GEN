@@ -31,7 +31,7 @@ const cards: EspaciosCard[] = [
   {
     id: '45:716',
     name: 'Reserva aquí',
-    image: '/assets/ef995749ed317516a4743f08762757f1b9a5c0bc.png',
+    image: '/assets/RESERVAS.png',
     disabled: true,
     imageWidth: 'w-[100%]',
     imageHeight: 'h-[100%]',
@@ -41,7 +41,7 @@ const cards: EspaciosCard[] = [
   {
     id: '45:718',
     name: 'Centros de distribución',
-    image: '/assets/06dcc457b89b569f32107551c3b5aff5bd68dc82.png',
+    image: '/assets/CENTRO_DE_DISTRIBUCION.png',
     isModal: true,
     imageWidth: 'w-[100%]',
     imageHeight: 'h-[100%]',
