@@ -22,7 +22,7 @@ const distributionPlaces: DistributionPlace[] = [
     country: 'Perú',
     city: 'Lima',
     address: 'Avenida Primavera 2219, 15023 Santiago de Surco, Lima, Perú',
-    schedule: 'Lun - Vie: 9:00 AM - 6:30 PM | Sáb: 9:00 AM - 2:00 PM',
+    schedule: '',
     phone: '+51 1 500 4040',
   },
   {
@@ -32,7 +32,7 @@ const distributionPlaces: DistributionPlace[] = [
     country: 'Perú',
     city: 'Lima',
     address: 'Avenida Las Palmeras 5788, 15304 Los Olivos, Lima, Perú',
-    schedule: 'Lun - Vie: 9:00 AM - 6:00 PM | Sáb: 9:00 AM - 1:00 PM',
+    schedule: '',
     phone: '+57 601 777 5544',
   },
   {
@@ -42,7 +42,7 @@ const distributionPlaces: DistributionPlace[] = [
     country: 'Perú',
     city: 'Arequipa',
     address: 'Calle Las Orquídeas 111, 04017 Cayma, Arequipa, Perú',
-    schedule: 'Lun - Vie: 9:00 AM - 6:00 PM',
+    schedule: '',
     phone: '+57 604 333 2211',
   },
   {
@@ -52,7 +52,7 @@ const distributionPlaces: DistributionPlace[] = [
     country: 'Perú',
     city: 'La Libertad',
     address: 'Calle Los Laureles 180, 13009 Víctor Larco Herrera, La Libertad, Perú',
-    schedule: 'Lun - Vie: 9:30 AM - 6:00 PM',
+    schedule: '',
     phone: '+593 2 350 7700',
   },
   {
@@ -62,7 +62,7 @@ const distributionPlaces: DistributionPlace[] = [
     country: 'Chile',
     city: 'Concepción',
     address: 'Freire 1056, Local 1, Concepción, Región del BioBio, Chile',
-    schedule: 'Lun - Vie: 9:00 AM - 6:00 PM | Sáb: 9:00 AM - 1:00 PM',
+    schedule: '',
     phone: '+52 55 6677 8899',
   },
   {
@@ -72,7 +72,7 @@ const distributionPlaces: DistributionPlace[] = [
     country: 'Ecuador',
     city: 'Guayaquil',
     address: 'Ciudadela Kennedy Norte. Miguel H, Alcivar esquina y Angel Barrera. Edificio Arquetipo III solar 17 MZ 97. Planta Baja, Oficina 2, Guayaquil',
-    schedule: 'Lun - Vie: 9:00 AM - 6:00 PM',
+    schedule: '',
     phone: '+56 2 4444 5566',
   },
   {
@@ -82,7 +82,7 @@ const distributionPlaces: DistributionPlace[] = [
     country: 'Colombia',
     city: 'Bogotá',
     address: 'Calle 72 # 29 -13, local FWP, Bogotá',
-    schedule: 'Lun - Vie: 9:00 AM - 6:00 PM',
+    schedule: '',
     phone: '+56 2 4444 5566',
   },
 
@@ -123,7 +123,7 @@ const distributionPlaces: DistributionPlace[] = [
     name: 'AYNI - San Martín de Porres',
     country: 'Perú',
     city: 'Lima',
-    address: 'Av. Angélica Gamarra 2158, Urb. El Pacífico (2do piso), San Martín de Porres, Lima, Perú',
+    address: 'Av. Angélica Gamarra 2158, San Martín de Porres, Lima, Perú',
     schedule: 'Lun - Vie: 9:00 AM - 6:00 PM | Sáb: 9:00 AM - 1:00 PM',
     phone: '+56 2 5555 6677',
   }
@@ -345,7 +345,7 @@ export default function DistributionModal({ isOpen, onClose }: DistributionModal
                         {place.address}
                       </p>
 
-                      {isSelected && (
+                      {isSelected && place.brand !== 'FWP' && place.schedule && (
                         <div className="mt-3 pt-3 border-t border-[#5c64f2]/25 space-y-1.5 text-xs text-white/75 animate-fadeIn">
                           <div className="flex items-start gap-2">
                             <svg
@@ -364,23 +364,7 @@ export default function DistributionModal({ isOpen, onClose }: DistributionModal
                             </svg>
                             <span className="font-sans leading-snug">{place.schedule}</span>
                           </div>
-                          <div className="flex items-center gap-2">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              strokeWidth={1.5}
-                              stroke="currentColor"
-                              className="w-4 h-4 text-[#a0a5fa] shrink-0"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.802-5.194-4.174-7-7l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"
-                              />
-                            </svg>
-                            <span className="font-sans">{place.phone}</span>
-                          </div>
+
                         </div>
                       )}
                     </div>
