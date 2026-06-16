@@ -15,7 +15,7 @@ const cards: CorporativoCard[] = [
   {
     id: '45:724',
     name: 'Historia',
-    image: '/assets/00a8a37c08dafc76cb1e42046b74b80bd9ea6f28.png',
+    image: '/assets/HISTORIA.png',
     link: 'https://equipogen.com/quienes-somos/#historia',
     imageWidth: 'w-[100%]',
     imageHeight: 'h-[100%]',
@@ -25,7 +25,7 @@ const cards: CorporativoCard[] = [
   {
     id: '45:726',
     name: 'Liderazgo',
-    image: '/assets/384afdd52e6f542e56a00c19d69067afdc6609ff.png',
+    image: '/assets/LIDERAZGO.png',
     link: 'https://equipogen.com/quienes-somos/#liderazgo',
     imageWidth: 'w-[100%]',
     imageHeight: 'h-[100%]',
@@ -35,7 +35,7 @@ const cards: CorporativoCard[] = [
   {
     id: '45:728',
     name: 'Responsabilidad Social',
-    image: '/assets/4e31d3aa5ed1e5dfa9ceb1cf96ba2c356f61f135.png',
+    image: '/assets/RESPONSABILIDAD_SOCIAL.png',
     link: 'https://equipogen.com/quienes-somos/#responsabilidad-social',
     imageWidth: 'w-[100%]',
     imageHeight: 'h-[100%]',

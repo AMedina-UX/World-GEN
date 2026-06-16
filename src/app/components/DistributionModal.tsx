@@ -136,12 +136,15 @@ export default function DistributionModal({ isOpen, onClose }: DistributionModal
   // Reset selection if the currently selected place is not in the filtered list
   useEffect(() => {
     if (filteredPlaces.length > 0) {
-      const isSelectedStillVisible = filteredPlaces.some((p) => p.id === selectedPlace.id);
+      const isSelectedStillVisible = filteredPlaces.some((p) => p.id === selectedPlace?.id);
       if (!isSelectedStillVisible) {
-        setSelectedPlace(filteredPlaces[0]);
+        const timer = setTimeout(() => {
+          setSelectedPlace(filteredPlaces[0]);
+        }, 0);
+        return () => clearTimeout(timer);
       }
     }
-  }, [filteredPlaces, selectedPlace.id]);
+  }, [filteredPlaces, selectedPlace?.id]);
 
   if (!isOpen) return null;
 
