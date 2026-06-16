@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 interface VideoModalProps {
   isOpen: boolean;
@@ -47,6 +47,7 @@ export default function VideoModal({ isOpen, onClose, videoUrl, videoSources }: 
   const controlsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const lastQualityChangeTimeRef = useRef<number>(0);
   const currentTimeRef = useRef<number>(0);
+  const pendingSeekTimeRef = useRef<number | null>(null);
 
   // Video State
   const [selectedQuality, setSelectedQuality] = useState<'auto' | '360p' | '720p' | '1080p'>('auto');
@@ -137,27 +138,16 @@ export default function VideoModal({ isOpen, onClose, videoUrl, videoSources }: 
   const activeUrl = videoSources ? (videoSources[activeQuality] || videoUrl) : videoUrl;
   const prevUrlRef = useRef<string>(activeUrl);
 
-  // 3. Smoothly switch video source preserving playhead time
-  useEffect(() => {
-    if (videoRef.current && prevUrlRef.current !== activeUrl) {
-      const video = videoRef.current;
-      const prevTime = currentTimeRef.current; // Use exact last playhead position from ref
-      const wasPlaying = !video.paused;
-
-      setIsBuffering(true);
-      video.src = activeUrl;
-      video.load();
-
-      const handleLoadedMetadata = () => {
-        video.currentTime = prevTime;
-        if (wasPlaying) {
-          video.play().catch(err => console.log('Error resuming playback after quality switch:', err));
-        }
-        video.removeEventListener('loadedmetadata', handleLoadedMetadata);
-      };
-
-      video.addEventListener('loadedmetadata', handleLoadedMetadata);
+  // 3. Trigger load, buffer indication, and playhead capture on active URL change
+  useLayoutEffect(() => {
+    if (prevUrlRef.current !== activeUrl) {
+      pendingSeekTimeRef.current = currentTimeRef.current;
       prevUrlRef.current = activeUrl;
+
+      if (videoRef.current) {
+        setIsBuffering(true);
+        videoRef.current.load();
+      }
     }
   }, [activeUrl]);
 
@@ -262,6 +252,21 @@ export default function VideoModal({ isOpen, onClose, videoUrl, videoSources }: 
     setTimeout(() => {
       setSplashAction(null);
     }, 500);
+  };
+
+  const handleLoadedMetadata = (e: React.SyntheticEvent<HTMLVideoElement>) => {
+    const video = e.currentTarget;
+    setDuration(video.duration);
+
+    if (pendingSeekTimeRef.current !== null) {
+      const seekTime = pendingSeekTimeRef.current;
+      pendingSeekTimeRef.current = null;
+      video.currentTime = seekTime;
+      
+      if (isPlaying) {
+        video.play().catch(err => console.log('Error resuming playback after quality switch:', err));
+      }
+    }
   };
 
   const handleTimeUpdate = () => {
@@ -411,7 +416,7 @@ export default function VideoModal({ isOpen, onClose, videoUrl, videoSources }: 
         ref={playerContainerRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={() => isPlaying && !showQualityMenu && setShowControls(false)}
-        className="relative w-full max-w-7xl bg-black border border-[#5c64f2]/40 rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(92,100,242,0.3)] select-none aspect-video"
+        className="relative mx-auto w-full md:max-w-3/4 max-w-4xl bg-black border border-[#5c64f2]/40 rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(92,100,242,0.3)] select-none aspect-video"
       >
         {/* Video Element */}
         <video
@@ -423,7 +428,7 @@ export default function VideoModal({ isOpen, onClose, videoUrl, videoSources }: 
           onPlaying={handlePlaying}
           onPlay={() => setIsPlaying(true)}
           onPause={() => setIsPlaying(false)}
-          onLoadedMetadata={(e) => setDuration(e.currentTarget.duration)}
+          onLoadedMetadata={handleLoadedMetadata}
           onDurationChange={(e) => setDuration(e.currentTarget.duration)}
           onProgress={handleTimeUpdate}
           className="w-full h-full object-contain cursor-pointer"
