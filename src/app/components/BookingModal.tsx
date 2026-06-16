@@ -19,7 +19,7 @@ const bookingPlaces: BookingPlace[] = [
     country: 'Perú',
     city: 'Lima',
     address: 'Av. Circunvalación del Golf los Incas 134, Santiago de Surco, Lima, Perú',
-    schedule: 'Lun - Sáb: 8:00 AM - 10:00 PM',
+    schedule: '',
     phone: '+51 1 500 4040',
   },
   {
@@ -28,7 +28,7 @@ const bookingPlaces: BookingPlace[] = [
     country: 'Perú',
     city: 'Lima',
     address: 'Av. El Derby 250, Santiago de Surco, Lima, Perú',
-    schedule: 'Lun - Vie: 9:00 AM - 9:00 PM | Sáb: 9:00 AM - 1:00 PM',
+    schedule: '',
     phone: '+51 1 700 8820',
   },
   {
@@ -37,7 +37,7 @@ const bookingPlaces: BookingPlace[] = [
     country: 'Argentina',
     city: 'Córdoba',
     address: 'Av. Colón 5050, Córdoba, Argentina',
-    schedule: 'Lun - Vie: 8:00 AM - 10:00 PM | Sáb: 9:00 AM - 5:00 PM',
+    schedule: '',
     phone: '+52 55 6677 8899',
   }
 ];
@@ -229,27 +229,6 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                         {place.address}
                       </p>
 
-                      {isSelected && (
-                        <div className="mt-3 pt-3 border-t border-[#5c64f2]/25 space-y-1.5 text-xs text-white/75 animate-fadeIn">
-                          <div className="flex items-start gap-2">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              strokeWidth={1.5}
-                              stroke="currentColor"
-                              className="w-4 h-4 text-[#a0a5fa] shrink-0 mt-0.5"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                              />
-                            </svg>
-                            <span className="font-sans leading-snug">{place.schedule}</span>
-                          </div>
-                        </div>
-                      )}
                     </div>
                   );
                 })
