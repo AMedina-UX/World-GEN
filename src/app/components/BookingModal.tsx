@@ -2,9 +2,8 @@
 
 import { useState, useEffect, useMemo } from 'react';
 
-interface DistributionPlace {
+interface BookingPlace {
   id: string;
-  brand: 'FWP' | 'AYNI';
   name: string;
   country: string;
   city: string;
@@ -13,130 +12,43 @@ interface DistributionPlace {
   phone: string;
 }
 
-const distributionPlaces: DistributionPlace[] = [
-  // FWP Brand Centers
+const bookingPlaces: BookingPlace[] = [
   {
-    id: 'fwp-1',
-    brand: 'FWP',
-    name: 'FWP Almacén - Santiago de Surco',
+    id: 'book-1',
+    name: 'World GEN - Surco',
     country: 'Perú',
     city: 'Lima',
-    address: 'Avenida Primavera 2219, 15023 Santiago de Surco, Lima, Perú',
-    schedule: 'Lun - Vie: 9:00 AM - 6:30 PM | Sáb: 9:00 AM - 2:00 PM',
+    address: 'Av. Circunvalación del Golf los Incas 134, Santiago de Surco, Lima, Perú',
+    schedule: 'Lun - Sáb: 8:00 AM - 10:00 PM',
     phone: '+51 1 500 4040',
   },
   {
-    id: 'fwp-2',
-    brand: 'FWP',
-    name: 'FWP Almacén - Los Olivos',
+    id: 'book-2',
+    name: 'World GEN - Derby',
     country: 'Perú',
     city: 'Lima',
-    address: 'Avenida Las Palmeras 5788, 15304 Los Olivos, Lima, Perú',
-    schedule: 'Lun - Vie: 9:00 AM - 6:00 PM | Sáb: 9:00 AM - 1:00 PM',
-    phone: '+57 601 777 5544',
+    address: 'Av. El Derby 250, Santiago de Surco, Lima, Perú',
+    schedule: 'Lun - Vie: 9:00 AM - 9:00 PM | Sáb: 9:00 AM - 1:00 PM',
+    phone: '+51 1 700 8820',
   },
   {
-    id: 'fwp-3',
-    brand: 'FWP',
-    name: 'FWP Almacén - Arequipa',
-    country: 'Perú',
-    city: 'Arequipa',
-    address: 'Calle Las Orquídeas 111, 04017 Cayma, Arequipa, Perú',
-    schedule: 'Lun - Vie: 9:00 AM - 6:00 PM',
-    phone: '+57 604 333 2211',
-  },
-  {
-    id: 'fwp-4',
-    brand: 'FWP',
-    name: 'FWP Almacén - Trujillo',
-    country: 'Perú',
-    city: 'La Libertad',
-    address: 'Calle Los Laureles 180, 13009 Víctor Larco Herrera, La Libertad, Perú',
-    schedule: 'Lun - Vie: 9:30 AM - 6:00 PM',
-    phone: '+593 2 350 7700',
-  },
-  {
-    id: 'fwp-5',
-    brand: 'FWP',
-    name: 'FWP Almacén - Chile',
-    country: 'Chile',
-    city: 'Concepción',
-    address: 'Freire 1056, Local 1, Concepción, Región del BioBio, Chile',
-    schedule: 'Lun - Vie: 9:00 AM - 6:00 PM | Sáb: 9:00 AM - 1:00 PM',
+    id: 'book-3',
+    name: 'World GEN - Argentina',
+    country: 'Argentina',
+    city: 'Córdoba',
+    address: 'Av. Colón 5050, Córdoba, Argentina',
+    schedule: 'Lun - Vie: 8:00 AM - 10:00 PM | Sáb: 9:00 AM - 5:00 PM',
     phone: '+52 55 6677 8899',
-  },
-  {
-    id: 'fwp-6',
-    brand: 'FWP',
-    name: 'FWP Almacén - Ecuador',
-    country: 'Ecuador',
-    city: 'Guayaquil',
-    address: 'Ciudadela Kennedy Norte. Miguel H, Alcivar esquina y Angel Barrera. Edificio Arquetipo III solar 17 MZ 97. Planta Baja, Oficina 2, Guayaquil',
-    schedule: 'Lun - Vie: 9:00 AM - 6:00 PM',
-    phone: '+56 2 4444 5566',
-  },
-  {
-    id: 'fwp-7',
-    brand: 'FWP',
-    name: 'FWP Almacén - Colombia',
-    country: 'Colombia',
-    city: 'Bogotá',
-    address: 'Calle 72 # 29 -13, local FWP, Bogotá',
-    schedule: 'Lun - Vie: 9:00 AM - 6:00 PM',
-    phone: '+56 2 4444 5566',
-  },
-
-  // AYNI Brand Centers
-  {
-    id: 'ayni-1',
-    brand: 'AYNI',
-    name: 'AYNI - Surco',
-    country: 'Perú',
-    city: 'Lima',
-    address: 'Av. Primavera 2221, Santiago de Surco, Lima, Perú',
-    schedule: 'Lun - Vie: 9:00 AM - 9:00 PM | Sáb: 9:00 AM - 5:00 PM',
-    phone: '+51 1 303 9090',
-  },
-  {
-    id: 'ayni-2',
-    brand: 'AYNI',
-    name: 'AYNI - San Isidro',
-    country: 'Perú',
-    city: 'Lima',
-    address: 'Av. Javier Prado Este 175, San Isidro, Lima, Perú',
-    schedule: 'Lun - Vie: 9:00 AM - 9:00 PM | Sáb: 9:00 AM - 5:00 PM',
-    phone: '+57 601 888 2211',
-  },
-  {
-    id: 'ayni-3',
-    brand: 'AYNI',
-    name: 'AYNI - La Molina',
-    country: 'Perú',
-    city: 'Lima',
-    address: 'Av. La Molina 3345, Edificio Colibrí, La Molina, Lima, Perú',
-    schedule: 'Lun - Vie: 9:00 AM - 9:00 PM | Sáb: 9:00 AM - 5:00 PM',
-    phone: '+52 55 9090 1122',
-  },
-  {
-    id: 'ayni-4',
-    brand: 'AYNI',
-    name: 'AYNI - San Martín de Porres',
-    country: 'Perú',
-    city: 'Lima',
-    address: 'Av. Angélica Gamarra 2158, Urb. El Pacífico (2do piso), San Martín de Porres, Lima, Perú',
-    schedule: 'Lun - Vie: 9:00 AM - 6:00 PM | Sáb: 9:00 AM - 1:00 PM',
-    phone: '+56 2 5555 6677',
   }
 ];
 
-interface DistributionModalProps {
+interface BookingModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-export default function DistributionModal({ isOpen, onClose }: DistributionModalProps) {
-  const [selectedBrand, setSelectedBrand] = useState<'FWP' | 'AYNI'>('FWP');
-  const [selectedPlace, setSelectedPlace] = useState<DistributionPlace | null>(null);
+export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
+  const [selectedPlace, setSelectedPlace] = useState<BookingPlace | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCountry, setSelectedCountry] = useState('Todos');
 
@@ -157,20 +69,15 @@ export default function DistributionModal({ isOpen, onClose }: DistributionModal
     };
   }, [isOpen, onClose]);
 
-  // Places filtered by active brand
-  const brandPlaces = useMemo(() => {
-    return distributionPlaces.filter((p) => p.brand === selectedBrand);
-  }, [selectedBrand]);
-
-  // List of unique countries for filter tabs under active brand
+  // List of unique countries for filter tabs
   const countries = useMemo(() => {
-    const list = new Set(brandPlaces.map((p) => p.country));
+    const list = new Set(bookingPlaces.map((p) => p.country));
     return ['Todos', ...Array.from(list)];
-  }, [brandPlaces]);
+  }, []);
 
   // Filtered places based on search query and country selection
   const filteredPlaces = useMemo(() => {
-    return brandPlaces.filter((place) => {
+    return bookingPlaces.filter((place) => {
       const matchesCountry = selectedCountry === 'Todos' || place.country === selectedCountry;
       const matchesSearch =
         place.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -179,7 +86,7 @@ export default function DistributionModal({ isOpen, onClose }: DistributionModal
         place.country.toLowerCase().includes(searchQuery.toLowerCase());
       return matchesCountry && matchesSearch;
     });
-  }, [brandPlaces, searchQuery, selectedCountry]);
+  }, [searchQuery, selectedCountry]);
 
   // Reset selection if the currently selected place is not in the filtered list
   useEffect(() => {
@@ -224,10 +131,10 @@ export default function DistributionModal({ isOpen, onClose }: DistributionModal
         <div className="flex justify-between items-center px-6 py-4 border-b border-[#5c64f2]/20 bg-[#19163c]/50">
           <div>
             <h3 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#d2d5fc] to-[#a0a5fa] font-sans">
-              Lugares de Distribución
+              Reserva de Espacios GEN
             </h3>
             <p className="text-xs text-white/60 font-sans mt-0.5">
-              Encuentra los puntos autorizados de retiro y distribución de productos.
+              Pronto podras hacer reservas de nuestros productos en las siguientes oficinas.
             </p>
           </div>
           <button
@@ -246,29 +153,6 @@ export default function DistributionModal({ isOpen, onClose }: DistributionModal
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
-        </div>
-
-        {/* Brand Tabs Bar */}
-        <div className="flex gap-2 px-6 py-3 border-b border-[#5c64f2]/20 bg-[#0d0b21]/45 overflow-x-auto no-scrollbar">
-          {(['FWP', 'AYNI'] as const).map((brand) => {
-            const isActive = selectedBrand === brand;
-            return (
-              <button
-                key={brand}
-                onClick={() => {
-                  setSelectedBrand(brand);
-                  setSelectedCountry('Todos');
-                  setSearchQuery('');
-                }}
-                className={`px-5 py-2 text-xs sm:text-sm font-bold rounded-xl border transition-all duration-300 cursor-pointer whitespace-nowrap ${isActive
-                  ? 'bg-gradient-to-r from-[#5c64f2] to-[#8087f7] text-white border-[#8087f7]/30 shadow-[0_0_15px_rgba(92,100,242,0.4)]'
-                  : 'bg-black/30 border-white/5 text-white/60 hover:border-white/20 hover:text-white/90'
-                  }`}
-              >
-                {brand}
-              </button>
-            );
-          })}
         </div>
 
         {/* Modal Main Content Container */}
@@ -298,7 +182,7 @@ export default function DistributionModal({ isOpen, onClose }: DistributionModal
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Buscar ciudad, dirección..."
+                placeholder="Buscar espacio, dirección..."
                 className="w-full pl-9 pr-4 py-2 text-sm text-white bg-black/40 border border-[#5c64f2]/30 rounded-xl focus:outline-none focus:border-[#5c64f2] focus:ring-1 focus:ring-[#5c64f2]/40 transition-all font-sans placeholder-white/30"
               />
             </div>
@@ -408,10 +292,10 @@ export default function DistributionModal({ isOpen, onClose }: DistributionModal
                     />
                   </svg>
                   <p className="text-sm font-semibold text-white/50 font-sans">
-                    No se encontraron locales
+                    No se encontraron espacios
                   </p>
                   <p className="text-xs text-white/30 font-sans mt-1">
-                    Prueba con otros términos de búsqueda o país.
+                    Prueba con otros términos de búsqueda.
                   </p>
                 </div>
               )}
@@ -431,7 +315,7 @@ export default function DistributionModal({ isOpen, onClose }: DistributionModal
               />
             ) : (
               <div className="absolute inset-0 flex items-center justify-center text-white/40">
-                Selecciona un punto de distribución para ver el mapa.
+                Selecciona un espacio de coworking para ver el mapa.
               </div>
             )}
 

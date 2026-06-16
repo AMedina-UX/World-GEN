@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import DistributionModal from './DistributionModal';
+import BookingModal from './BookingModal';
 
 interface EspaciosCard {
   id: string;
@@ -11,6 +12,7 @@ interface EspaciosCard {
   link?: string;
   disabled?: boolean;
   isModal?: boolean;
+  isBookingModal?: boolean;
   imageWidth: string;
   imageHeight: string;
   imageOffsetLeft: string;
@@ -32,7 +34,7 @@ const cards: EspaciosCard[] = [
     id: '45:716',
     name: 'Reserva aquí',
     image: '/assets/RESERVAS.png',
-    disabled: true,
+    isBookingModal: true,
     imageWidth: 'w-[100%]',
     imageHeight: 'h-[100%]',
     imageOffsetLeft: 'left-0',
@@ -52,6 +54,7 @@ const cards: EspaciosCard[] = [
 
 export default function EspaciosGEN() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
 
   return (
     <section
@@ -65,7 +68,7 @@ export default function EspaciosGEN() {
         Espacios GEN
       </h2>
 
-      {/* 3 Cards Container Grid */}
+      {/* 3 Cards Grid Container */}
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 w-full mt-8">
         {cards.map((card) => {
           const cardInnerContent = (
@@ -91,6 +94,14 @@ export default function EspaciosGEN() {
                 </div>
               </div>
 
+              {/* Próximamente Badge at the bottom of the active booking card */}
+              {card.isBookingModal && (
+                <div className="absolute bottom-4 left-0 right-0 flex justify-center z-30 pointer-events-none">
+                  <span className="text-[12px] sm:text-[16px] font-bold text-white/60 tracking-widest uppercase bg-black/60 border border-white/10 px-3.5 py-1.5 rounded-full backdrop-blur-sm shadow-md">
+                    Próximamente
+                  </span>
+                </div>
+              )}
 
               {/* Locked overlay for disabled card */}
               {card.disabled && (
@@ -145,6 +156,20 @@ export default function EspaciosGEN() {
             );
           }
 
+          if (card.isBookingModal) {
+            return (
+              <button
+                key={card.id}
+                onClick={() => setIsBookingOpen(true)}
+                type="button"
+                className="group relative block w-full aspect-[1/1] rounded-2xl overflow-hidden border border-[#5c64f2]/30 bg-black/40 shadow-[0_4px_20px_rgba(71,3,166,0.15)] transition-all duration-500 ease-out hover:border-[#5c64f2]/80 hover:shadow-[0_0_35px_5px_rgba(92,100,242,0.35)] cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-[#5c64f2]/60"
+                data-node-id={card.id}
+              >
+                {cardInnerContent}
+              </button>
+            );
+          }
+
           return (
             <a
               key={card.id}
@@ -161,6 +186,7 @@ export default function EspaciosGEN() {
       </div>
 
       <DistributionModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
     </section>
   );
 }
