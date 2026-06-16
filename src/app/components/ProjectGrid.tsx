@@ -11,6 +11,14 @@ interface Project {
 
 const firstRowProjects: Project[] = [
   {
+    id: '3:244',
+    name: 'AYNI',
+    image: '/assets/ayni.png',
+    link: 'https://linktr.ee/ayniworldoficial?utm_source=linktree_profile_share&ltsid=612bcf94-15c4-44c0-abb3-383ebc3fcbe5',
+    active: true,
+    aspect: 'aspect-[277.57/335]'
+  },
+  {
     id: '3:246',
     name: 'MINED',
     image: '/assets/da9895df3b4fa261f4417d6d6488883d472ca81b.png',
@@ -25,15 +33,8 @@ const firstRowProjects: Project[] = [
     link: 'https://linktr.ee/futureworldproducts?utm_source=linktree_profile_share&ltsid=d1854c57-5c4c-4f40-84af-6d18833b1cf7',
     active: true,
     aspect: 'aspect-[275.65/335]'
-  },
-  {
-    id: '3:244',
-    name: 'AYNI',
-    image: '/assets/ayni.png',
-    link: 'https://linktr.ee/ayniworldoficial?utm_source=linktree_profile_share&ltsid=612bcf94-15c4-44c0-abb3-383ebc3fcbe5',
-    active: true,
-    aspect: 'aspect-[277.57/335]'
   }
+
 ];
 
 const secondRowProjects: Project[] = [
