@@ -29,7 +29,7 @@ export default function Navbar() {
     <>
       <nav className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4" data-node-id="3:2603">
         <div
-          className="w-full sm:w-auto max-w-5xl backdrop-blur-md bg-[#1a163b]/70 border border-[#5c64f2]/60 rounded-full shadow-[0px_0px_25px_0px_rgba(71,3,166,0.4)] transition-all duration-500 hover:border-[#5c64f2]/90 flex flex-row items-center justify-between sm:justify-start px-6 py-2.5 gap-4"
+          className="w-full sm:w-auto max-w-5xl backdrop-blur-md bg-[#1a163b]/70 border border-[#5c64f2]/60 rounded-full shadow-[0px_0px_25px_0px_rgba(71,3,166,0.4)] transition-all duration-500 hover:border-[#5c64f2]/90 flex flex-row items-center justify-between sm:justify-start px-6 py-1 gap-4"
         >
           {/* Logo and Mobile Menu Trigger container */}
           <div className="flex items-center justify-between w-full sm:w-auto">
@@ -117,17 +117,15 @@ export default function Navbar() {
       {/* Mobile Menu Drawer Modal */}
       {/* Dark overlay backdrop */}
       <div
-        className={`fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] transition-opacity duration-300 sm:hidden ${
-          isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
+        className={`fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] transition-opacity duration-300 sm:hidden ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          }`}
         onClick={() => setIsOpen(false)}
       />
 
       {/* Slide-over Drawer panel */}
       <div
-        className={`fixed top-0 right-0 bottom-0 w-[80%] max-w-[320px] bg-[#100d28]/95 border-l border-[#5c64f2]/40 backdrop-blur-xl z-[101] p-6 flex flex-col justify-between transition-transform duration-300 ease-in-out sm:hidden ${
-          isOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
+        className={`fixed top-0 right-0 bottom-0 w-[80%] max-w-[320px] bg-[#100d28]/95 border-l border-[#5c64f2]/40 backdrop-blur-xl z-[101] p-6 flex flex-col justify-between transition-transform duration-300 ease-in-out sm:hidden ${isOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
       >
         <div className="flex flex-col gap-10">
           {/* Header (Logo + Close btn) */}
