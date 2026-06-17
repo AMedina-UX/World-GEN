@@ -74,10 +74,10 @@ export default function Hero() {
         data-node-id="21:1515"
       >
         <span
-          className="text-[clamp(10px,1.2vw,14px)] font-medium tracking-widest text-[#d2d5fc]/85 group-hover:text-white transition-colors duration-300 uppercase"
+          className="text-[clamp(10px,1.2vw,14px)] font-medium tracking-widest text-[#d2d5fc]/85 group-hover:text-white transition-colors duration-300 uppercase text-center"
           data-node-id="21:1514"
         >
-          Ve nuestras empresas
+          Explora <br />nuestras empresas
         </span>
         <div
           className="relative w-8 h-8 sm:w-10 sm:h-10 animate-bounce-slow"

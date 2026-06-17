@@ -15,17 +15,16 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4" data-node-id="3:2603">
-      <div 
-        className={`w-full max-w-5xl backdrop-blur-md bg-[#1a163b]/70 border border-[#5c64f2]/60 rounded-3xl sm:rounded-full shadow-[0px_0px_25px_0px_rgba(71,3,166,0.4)] transition-all duration-500 hover:border-[#5c64f2]/90 flex flex-col sm:flex-row sm:items-center sm:justify-between px-6 py-3.5 sm:py-2.5 gap-4 overflow-hidden ${
-          isOpen ? 'max-h-[380px] rounded-[2rem]' : 'max-h-[72px] sm:max-h-none'
-        }`}
+      <div
+        className={`w-full sm:w-auto max-w-5xl backdrop-blur-md bg-[#1a163b]/70 border border-[#5c64f2]/60 rounded-3xl sm:rounded-full shadow-[0px_0px_25px_0px_rgba(71,3,166,0.4)] transition-all duration-500 hover:border-[#5c64f2]/90 flex flex-col sm:flex-row sm:items-center sm:justify-between px-6 py-3.5 sm:py-2.5 gap-4 overflow-hidden ${isOpen ? 'max-h-[380px] rounded-[2rem]' : 'max-h-[72px] sm:max-h-none'
+          }`}
         style={{ transition: 'max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-radius 0.4s ease-in-out' }}
       >
         {/* Header Row: Logo and Hamburger Button */}
         <div className="flex items-center justify-between w-full sm:w-auto">
           {/* Logo */}
-          <div 
-            className="relative h-10 w-10 sm:h-12 sm:w-12 cursor-pointer hover:scale-105 transition-transform duration-200" 
+          <div
+            className="relative h-10 w-10 sm:h-12 sm:w-12 cursor-pointer hover:scale-105 transition-transform duration-200"
             onClick={() => {
               window.scrollTo({ top: 0, behavior: 'smooth' });
               setIsOpen(false);
@@ -64,12 +63,11 @@ export default function Navbar() {
         </div>
 
         {/* Navigation Links (Collapsible on Mobile, always visible on Desktop) */}
-        <div 
-          className={`flex flex-col sm:flex-row gap-2 sm:gap-6 md:gap-8 items-center text-xs sm:text-sm font-semibold sm:font-normal text-white/80 w-full sm:w-auto transition-all duration-300 ${
-            isOpen 
-              ? 'opacity-100 translate-y-0' 
-              : 'opacity-0 -translate-y-2 sm:opacity-100 sm:translate-y-0 pointer-events-none sm:pointer-events-auto hidden sm:flex'
-          }`}
+        <div
+          className={`flex flex-col sm:flex-row gap-2 sm:gap-6 md:gap-8 items-center text-xs sm:text-sm font-semibold sm:font-normal text-white/80 w-full sm:w-auto transition-all duration-300 ${isOpen
+            ? 'opacity-100 translate-y-0'
+            : 'opacity-0 -translate-y-2 sm:opacity-100 sm:translate-y-0 pointer-events-none sm:pointer-events-auto hidden sm:flex'
+            }`}
           data-node-id="3:2635"
         >
           <button
@@ -124,6 +122,9 @@ export default function Navbar() {
             Corporativo
           </button>
         </div>
+
+        {/* Spacer to center the navigation links in desktop layout */}
+        <div className="hidden sm:block w-10 sm:w-12" aria-hidden="true" />
       </div>
     </nav>
   );

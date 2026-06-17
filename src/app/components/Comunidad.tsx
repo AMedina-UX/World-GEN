@@ -51,7 +51,7 @@ const cards: ComunidadCard[] = [
     id: '45:688',
     name: 'Salón de la conquista',
     image: '/assets/CONQUISTA.png',
-    link: 'https://mined.world/reconocimientos/#premios',
+    link: 'https://equipogen.com/salon-de-conquista',
     imageWidth: 'w-[100%]',
     imageHeight: 'h-[100%]',
     imageOffsetLeft: 'left-0',
